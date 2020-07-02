@@ -8,17 +8,17 @@ For more details , go to this url : https://blog.csdn.net/chenqide163/article/de
 # 驱动结果显示
 先展示成品吧，感兴趣则继续往后看，本人承诺：我技术不咋地，相信懂java的同学都能看懂我的代码：）
 1. 墨水屏官方网站给出的示例，可以看出有灰阶（白，浅黑，深黑，全黑）
-![image](https://img-blog.csdnimg.cn/20200701001451252.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =390x240)
+![image](https://img-blog.csdnimg.cn/20200701001451252.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 2. 傻瓜式二值图像抖动算法，模拟灰阶进行展示，效果能看
-![image](https://img-blog.csdnimg.cn/20200701001831455.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =390x240)
+![image](https://img-blog.csdnimg.cn/20200701001831455.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 3. 又，程序员的示爱
-![image](https://img-blog.csdnimg.cn/20200701013338677.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =420x240)
+![image](https://img-blog.csdnimg.cn/20200701013338677.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 # 官方驱动测试
 ## 接线
 1. 上微雪官网，找到我买的[4.2寸黑白墨水屏的主页](http://www.waveshare.net/wiki/4.2inch_e-Paper_Module)，进入树莓派教程页签：**RPI使用教程**，重点接线图见下，关注红框内的引脚号码，这里写的是Board物理引脚序号：
-![image](https://img-blog.csdnimg.cn/20200701195748880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =600x230)
+![image](https://img-blog.csdnimg.cn/20200701195748880.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 2. 对应树莓派的引脚见下图，一定要按Board的引脚接线，上图也明确写的Board物理引脚：
-![image](https://img-blog.csdnimg.cn/2020070120021519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =200x400)
+![image](https://img-blog.csdnimg.cn/2020070120021519.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 ## 初步测试
 1. 继续在树莓派教程页签（[微雪4.2寸黑白墨水屏的主页](http://www.waveshare.net/wiki/4.2inch_e-Paper_Module)，进入树莓派教程页签：**RPI使用教程**），按指导，打开spi，安装一堆python库，下载测试程序，中间如果遇到什么问题，简单百度一下就可以解决，然后跑python示例
 2. **RPI使用教程**中，涉及c语言的跳过就行，**API详解**部分，不感兴趣的同学不看也没大关系，瞄一眼看懂看不懂都行，有个概念最好
@@ -32,7 +32,7 @@ DEBUG:root:Horizontal
 ......
 ```
 4. 墨水屏跑示例见下，使用3倍速度：
-![image](https://img-blog.csdnimg.cn/20200701230432747.gif#pic_center =450x)
+![image](https://img-blog.csdnimg.cn/20200701230432747.gif)
 # java驱动（仅二值图片展示，非灰阶部分）
 1. 作为java的忠实拥趸，我还是参考python示例，使用java实现这个4.2寸墨水屏的驱动吧
 2. 几个关键方法见下，实际上代码里都有，可以自己下代码详看，我列出来，主要是对部分关键处做总结
@@ -128,7 +128,7 @@ public static void init() throws IOException, InterruptedException {
 ## 点阵排列
 1. 我在这个屏幕的数据手册中，没有找到屏幕对应的数据排列方式，但是从驱动的过程中，屏幕中像素与字节的关系应该如下，见截图
 2. 这里如果说的不对，请各位大佬指正一下，谢谢
-![image](https://img-blog.csdnimg.cn/20200701213924951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center)
+![image](https://img-blog.csdnimg.cn/20200701213924951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 ## 显示方法
 1. 结合以上数据手册LUT后的流程图，就可以理解设置的sendCommand是为什么
 2. 结合以上**点阵排列**章节，就能理解为什么可以直接写入的像素字节
@@ -234,11 +234,11 @@ public static void getBinImg() throws IOException {
 ```
 3. 效果如下，图片若侵权，请告知，我马上删除。
 	1.原图：
-	![image](https://img-blog.csdnimg.cn/20200701222416854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =300x230)
+	![image](https://img-blog.csdnimg.cn/20200701222416854.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 	2.模拟灰阶的二值图片：
-	![image](https://img-blog.csdnimg.cn/2020070122264287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =300x230)
+	![image](https://img-blog.csdnimg.cn/2020070122264287.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 	3. 树莓派展示见下，墨水屏这个屏幕看着非常舒服，暖暖的，对眼睛很讨喜：
-![image](https://img-blog.csdnimg.cn/20200701223057620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =300x230)
+![image](https://img-blog.csdnimg.cn/20200701223057620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 ## 输出文字内容的图片
 1. 其实这个很容易，任意字体，任意文字，想怎么展示怎么展示，见我之前的一篇内容《[树莓派使用java控制ssd1306驱动12864oled显示任意字体任意文字](https://blog.csdn.net/chenqide163/article/details/106933858)》
 2. 这里还是给出一个示例，就拿本文最初的那首小诗来说吧：
@@ -268,9 +268,9 @@ public static void getFontImage() throws IOException {
 }
 ```
 3. 输出的图像见下，在电脑的彩色显示器上，纯白色很刺眼，但是到了墨水屏上，感觉就很平易近人。墨水屏的效果可以翻到上边去看下。
-![image](https://img-blog.csdnimg.cn/20200701224107177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =180x120)
+![image](https://img-blog.csdnimg.cn/20200701224107177.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
 # 参考资料
 代码稍后上传到github，请稍等
 # 致谢
 谢几百公里外的爱人和老父母，我因外地工作不能陪伴在旁，他们带孩子很辛苦。做个图以表感谢。
-![image](https://img-blog.csdnimg.cn/20200701001648264.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70#pic_center =240x190)
+![image](https://img-blog.csdnimg.cn/20200701001648264.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2NoZW5xaWRlMTYz,size_16,color_FFFFFF,t_70)
