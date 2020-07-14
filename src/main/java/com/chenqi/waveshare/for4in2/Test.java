@@ -19,7 +19,7 @@ public class Test {
 
         //getBinImg();
 
-        getFontImage();
+        getGrayImg();
     }
 
     public static void getBinImg() throws IOException {
@@ -65,8 +65,8 @@ public class Test {
                 }
                 binImage.setRGB(i,j,binValue);
             }
-            ImageIO.write(binImage, "jpg", new File("D:\\test3.jpg"));
         }
+        ImageIO.write(binImage, "jpg", new File("D:\\test3.jpg"));
     }
 
 
@@ -100,5 +100,47 @@ public class Test {
         for(byte b : pixels){
             System.out.println(b&0xff);
         }
+    }
+
+
+    public static void getGrayImg() throws IOException {
+        int width = 400;
+        int height = 300;
+
+        //定义一个BufferedImage对象，用于保存缩小后的位图
+        BufferedImage bufferedImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics graphics = bufferedImage.getGraphics();
+
+        //读取原始位图
+        Image srcImage = ImageIO.read(new File("D:\\timg (2).jpg"));
+
+        //将原始位图按墨水屏幕大小缩小后绘制到bufferedImage对象中
+        graphics.drawImage(srcImage, 0, 0, width, height, null);
+        //将bufferedImage对象输出到磁盘上
+        //ImageIO.write(bufferedImage, "jpg", new File("D:\\test2.jpg"));
+
+        BufferedImage grayImage = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                int rgb = bufferedImage.getRGB(i, j);
+                grayImage.setRGB(i, j, rgb);
+            }
+        }
+
+        final byte[] pixels = ((DataBufferByte) grayImage.getRaster().getDataBuffer()).getData();
+        for (int i = 0; i < width * height; i++) {
+            int grayNum = pixels[i] & 0xFF;
+            if (i < 100) System.out.println(grayNum);
+        }
+
+        int[] grayIndex = new int[300*400];
+        int index = 0;
+        for(int i = 0 ; i< height ;i++){
+            for(int j = 0 ;j < width ; j++){
+                grayIndex[index] = grayImage.getRGB(j,i);
+                index++;
+            }
+        }
+        ImageIO.write(grayImage, "jpg", new File("D:\\test3.jpg"));
     }
 }
