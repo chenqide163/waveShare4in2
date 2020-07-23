@@ -9,7 +9,10 @@ import java.io.IOException;
 
 public class For4in2Demo {
 
-    private For4in2Demo(){};
+    public final static int WIDTH = 400;
+    public final static int HEIGHT = 300;
+
+    private For4in2Demo(){}
 
     private static For4in2Demo for4in2Demo = new For4in2Demo();
 
@@ -199,11 +202,11 @@ public class For4in2Demo {
         //sendCommand(0x92); //Partial Out,python驱动中有设置这个，奇怪，设置局部刷新？这个指令不设置也是可以的
         setLut();
         sendCommand(0x10);
-        for (int i = 0; i < 300 * 400 / 8; i++) {
+        for (int i = 0; i < HEIGHT * WIDTH / 8; i++) {
             sendData(0xFF);
         }
         sendCommand(0x13);
-        for (int i = 0; i < 300 * 400 / 8; i++) {
+        for (int i = 0; i < HEIGHT * WIDTH / 8; i++) {
             sendData(pixels[i]);
         }
         sendCommand(0x12);
@@ -220,11 +223,11 @@ public class For4in2Demo {
         //sendCommand(0x92);
         setLut();
         sendCommand(0x10);
-        for (int i = 0; i < 300 * 400; i++) {
+        for (int i = 0; i < HEIGHT * WIDTH; i++) {
             sendData(0xFF);
         }
         sendCommand(0x13);
-        for (int i = 0; i < 300 * 400; i++) {
+        for (int i = 0; i < HEIGHT * WIDTH; i++) {
             sendData(0xFF);
         }
         sendCommand(0x12);
@@ -268,73 +271,6 @@ public class For4in2Demo {
 
         sendCommand(0X50); //Vcom and data interval setting
         sendData(0x97);
-    }
-
-    public void partialDisplay(int grayIndex) throws IOException, InterruptedException {
-        System.out.println("start to partialDisplay ======");
-        int width = 400;
-        int height = 300;
-
-        setPartialSetLut();
-        sendCommand(0x91);
-
-        sendCommand(0x90);
-        sendData(0); //x-start
-        sendData(0);
-        sendData(width / 256); //x-end
-        sendData((width % 256)-1);
-
-        sendData(0); //y-start
-        sendData(0);
-        sendData(height / 256);//y-end
-        sendData((height % 256)-1 );
-
-        sendData(28);
-
-        sendCommand(0x10);
-        for (int i = 0; i < 300 * 400 / 8; i++) {
-            sendData(0xFF);
-        }
-
-        sendCommand(0x13);
-        for (int i = 0; i < 300 * 400 / 8; i++) {
-            int index = (i % 50) / 3;
-            if(index > 15) index = 15;
-            if (index > grayIndex) {
-                sendData(0);
-            }
-            else{
-                sendData(0xFF);
-            }
-        }
-        sendCommand(0x12);
-        Thread.sleep(200);
-        readBusy();
-
-    }
-
-    public void setPartialSetLut() throws IOException {
-
-        sendCommand(0x20);
-        for (int data : Epaper4in2GrayScale.EPD_4IN2_PARTIAL_LUT_VCOM1) {
-            sendData(data);
-        }
-        sendCommand(0x21);
-        for (int data : Epaper4in2GrayScale.EPD_4IN2_PARTIAL_LUT_WW1) {
-            sendData(data);
-        }
-        sendCommand(0x22);
-        for (int data : Epaper4in2GrayScale.EPD_4IN2_PARTIAL_LUT_BW1) {
-            sendData(data);
-        }
-        sendCommand(0x23);
-        for (int data : Epaper4in2GrayScale.EPD_4IN2_PARTIAL_LUT_WB1) {
-            sendData(data);
-        }
-        sendCommand(0x24);
-        for (int data : Epaper4in2GrayScale.EPD_4IN2_PARTIAL_LUT_BB1) {
-            sendData(data);
-        }
     }
 
     final static int[] LUT_VCOM0 = {0x00, 0x17, 0x00, 0x00, 0x00, 0x02,

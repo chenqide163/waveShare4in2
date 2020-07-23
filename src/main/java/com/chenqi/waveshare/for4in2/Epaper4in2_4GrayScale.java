@@ -6,9 +6,6 @@ import java.io.IOException;
 
 public class Epaper4in2_4GrayScale {
 
-    final int WIDTH = 400;
-    final int HEIGHT = 300;
-
     private Epaper4in2_4GrayScale() {
     }
 
@@ -32,7 +29,7 @@ public class Epaper4in2_4GrayScale {
     public void displayImgWith4GrayScale(BufferedImage grayImage) throws IOException, InterruptedException {
         System.out.println("displayImgWith4GrayScale ===");
 
-        if(grayImage.getHeight() != HEIGHT ||grayImage.getWidth() != WIDTH || grayImage.getType() != BufferedImage.TYPE_BYTE_GRAY)
+        if(grayImage.getHeight() != For4in2Demo.HEIGHT ||grayImage.getWidth() != For4in2Demo.WIDTH || grayImage.getType() != BufferedImage.TYPE_BYTE_GRAY)
         {
             System.out.println("displayImgWith4GrayScale not a gray img ===");
             return;
@@ -44,7 +41,7 @@ public class Epaper4in2_4GrayScale {
         int step = 0;
         int temp = 0;
 
-        for (int i = 0; i < WIDTH * HEIGHT; i++) {
+        for (int i = 0; i < For4in2Demo.WIDTH * For4in2Demo.HEIGHT; i++) {
             int grayNum = pixels[i] & 0xFF;
             if (grayNum < 0xff / 2) {
                 temp |= 0;
@@ -63,7 +60,7 @@ public class Epaper4in2_4GrayScale {
         }
         temp = 0;
         for4in2Demo.sendCommand(0x13);
-        for (int i = 0; i < WIDTH * HEIGHT; i++) {
+        for (int i = 0; i < For4in2Demo.WIDTH * For4in2Demo.HEIGHT; i++) {
             int grayNum = pixels[i] & 0xFF;
             if (grayNum < GRAY_SCALE_OF_4[0]) {
                 temp |= 0;
@@ -95,11 +92,11 @@ public class Epaper4in2_4GrayScale {
      * @throws IOException
      * @throws InterruptedException
      */
-    public void display4GrayScale() throws IOException, InterruptedException {
+    public void display4GrayScaleLabber() throws IOException, InterruptedException {
         System.out.println("display4GrayScale ===");
         for4in2Demo.sendCommand(0x92);
         for4in2Demo.sendCommand(0x10);
-        for (int i = 0; i < WIDTH * HEIGHT / 8; i++) {
+        for (int i = 0; i < For4in2Demo.WIDTH * For4in2Demo.HEIGHT / 8; i++) {
             int index = (i % 50) / 12; //每个颜色阶梯使用12 *8个像素展示
             if (index > 3) index = 3; //只展示0~3这4个色阶，大于3就展示第三个色阶
             if (index == 0 || index == 1) {
@@ -109,7 +106,7 @@ public class Epaper4in2_4GrayScale {
             }
         }
         for4in2Demo.sendCommand(0x13);
-        for (int i = 0; i < WIDTH * HEIGHT / 8; i++) {
+        for (int i = 0; i < For4in2Demo.WIDTH * For4in2Demo.HEIGHT / 8; i++) {
             int index = (i % 50) / 12;
             if (index > 3) {
                 index = 3;

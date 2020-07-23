@@ -17,7 +17,7 @@ public class Test {
         System.out.println(b);
         System.out.println(File.separator);
 
-        //getBinImg();
+        //getColorImg();
 
         getGrayImg();
     }
